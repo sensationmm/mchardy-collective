@@ -1,18 +1,37 @@
 * {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+div, span, main, footer, header, button, h1, h2, ul, ol, li {
+  position: relative;
+}
+
+body, button {
+  font-family: "bell-centennial-std-address", sans-serif;
 }
 
 body {
-  color: #fff;
-  background: #000;
+  font-weight: 400;
+  font-style: normal;
+  padding-top: 120vh
+}
+
+h1,h2 {
+  font-family: "bell-centennial-std-bold-lis", sans-serif;
+}
+
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 a {
