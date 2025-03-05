@@ -20,14 +20,7 @@ import { HoverContent } from '@/components/HoverContent';
 import * as Styled from './page.styles';
 import { Scroller } from '@/components/Scroller';
 import { Contact } from '@/components/Contact';
-
-export const PageQuery = gql`
-  query PageQuery($id: ID!, $preview: Boolean = false) {
-    page(id: $id, idType: DATABASE_ID, asPreview: $preview) {
-      content
-    }
-  }
-`;
+import { PageQuery } from '@/components/Templates/Page/PageQuery';
 
 type Props = {
   params: { slug: string };
