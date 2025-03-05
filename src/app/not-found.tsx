@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
     idType: 'DATABASE_ID',
   });
 
-  const metadata = setSeoData({ seo: 'Page Not Found' });
+  const metadata = setSeoData({ seo: {} });
 
   return {
     ...metadata,

@@ -1,6 +1,32 @@
 import { Page } from "@/gql/graphql";
 
-export const setSeoData = ({ seo }: { seo: Page["seo"] }) => {
+type ISeo = {
+  title?: string;
+  metaDesc?: string;
+  metaRobotsNoindex?: string;
+  metaRobotsNofollow?: string;
+  opengraphTitle?: string;
+  opengraphDescription?: string;
+  opengraphUrl?: string;
+  opengraphImage?: {
+    sourceUrl: string;
+    mediaDetails: {
+      width: number;
+      height: number;
+    }
+    altText: string;
+
+  };
+  opengraphSiteName?: string;
+  opengraphType?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: {
+    sourceUrl: string;
+  }
+}
+
+export const setSeoData = ({ seo }: { seo: ISeo }) => {
   if (!seo) return {};
 
   return {
