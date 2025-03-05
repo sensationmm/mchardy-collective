@@ -4,7 +4,7 @@ import { palette } from '@/config/color';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  color: #000;
+  color: ${palette.tertiary.dark};
 
   &:before,
   &:after {
@@ -12,7 +12,7 @@ export const Container = styled.div`
     position: absolute;
     width: 15px;
     height: 15px;
-    background: #000;
+    background: ${palette.tertiary.dark};
     left: 0;
   }
 

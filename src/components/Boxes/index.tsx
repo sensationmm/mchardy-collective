@@ -91,7 +91,7 @@ export const Boxes: React.FC<IBoxes> = ({ boxes }) => {
       />
       <Box
         {...boxes[1]}
-        color='#000000'
+        color={palette.tertiary.dark}
         bgcolor={boxColor[2]}
         onMouseOver={() => setHovered(2)}
         onMouseOut={() => setHovered(0)}

@@ -1,19 +1,24 @@
 'use client';
 
+import { palette } from '@/config/color';
 import styled from 'styled-components';
 
 export const Title = styled.h2`
   font-size: 64px;
   text-align: center;
+  margin: 0;
 `;
 
 export const Intro = styled.p`
   font-size: 18px;
   text-align: center;
+  margin-bottom: 60px;
+  color: ${palette.tertiary.main};
 `;
 
 export const Slider = styled.div`
   overflow-x: auto;
+  padding: 10px 10px 60px 10px;
 `;
 
 export const SliderInner = styled.div<{ $numSlides: number }>`

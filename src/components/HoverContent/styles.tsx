@@ -84,7 +84,7 @@ export const ItemImageContainer = styled.div`
 export const ItemImage = styled.div`
   width: 475px;
   height: 475px;
-  background: #000;
+  background: ${palette.tertiary.dark};
 
   &:before,
   &:after {

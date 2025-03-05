@@ -1,3 +1,4 @@
+import { palette } from '@/config/color';
 import * as Styled from './styles';
 
 type IButtonProps = {
@@ -6,7 +7,7 @@ type IButtonProps = {
   color?: string;
 };
 
-export const Button: React.FC<IButtonProps> = ({ label, link, color = '#000' }) => {
+export const Button: React.FC<IButtonProps> = ({ label, link, color = palette.tertiary.dark }) => {
   return (
     <Styled.Button $color={color} onClick={link}>
       {label}
