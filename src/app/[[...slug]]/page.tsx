@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { print } from 'graphql/language/printer';
+import gql from 'graphql-tag';
 
 import { setSeoData } from '@/utils/seoData';
 
 import { fetchGraphQL } from '@/utils/fetchGraphQL';
 import { ContentInfoQuery } from '@/queries/general/ContentInfoQuery';
-import { ContentNode } from '@/gql/graphql';
+import { ContentNode, Page } from '@/gql/graphql';
 import PageTemplate from '@/components/Templates/Page/PageTemplate';
 import { nextSlugToWpSlug } from '@/utils/nextSlugToWpSlug';
 import PostTemplate from '@/components/Templates/Post/PostTemplate';
@@ -20,46 +21,62 @@ import * as Styled from './page.styles';
 import { Scroller } from '@/components/Scroller';
 import { Contact } from '@/components/Contact';
 
+export const PageQuery = gql`
+  query PageQuery($id: ID!, $preview: Boolean = false) {
+    page(id: $id, idType: DATABASE_ID, asPreview: $preview) {
+      content
+    }
+  }
+`;
+
 type Props = {
   params: { slug: string };
+  node: ContentNode;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const slug = nextSlugToWpSlug(params.slug);
-  const isPreview = slug.includes('preview');
+// export async function generateMetadata({ params }: Props): Promise<Metadata> {
+//   const slug = nextSlugToWpSlug(params.slug);
+//   const isPreview = slug.includes('preview');
 
-  const { contentNode } = await fetchGraphQL<{ contentNode: ContentNode }>(print(SeoQuery), {
-    slug: isPreview ? slug.split('preview/')[1] : slug,
-    idType: isPreview ? 'DATABASE_ID' : 'URI',
-  });
+//   const { contentNode } = await fetchGraphQL<{ contentNode: ContentNode }>(print(SeoQuery), {
+//     slug: isPreview ? slug.split('preview/')[1] : slug,
+//     idType: isPreview ? 'DATABASE_ID' : 'URI',
+//   });
 
-  if (!contentNode) {
-    return notFound();
-  }
+//   if (!contentNode) {
+//     return notFound();
+//   }
 
-  const metadata = setSeoData({ seo: contentNode.seo });
+//   const metadata = setSeoData({ seo: contentNode.seo });
 
-  return {
-    ...metadata,
-    alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}${slug}`,
-    },
-  } as Metadata;
-}
+//   return {
+//     ...metadata,
+//     alternates: {
+//       canonical: `${process.env.NEXT_PUBLIC_BASE_URL}${slug}`,
+//     },
+//   } as Metadata;
+// }
 
 export function generateStaticParams() {
   return [];
 }
 
-export default async function Page({ params }: Props) {
+export default async function HomePage({ params, node }: Props) {
   const slug = nextSlugToWpSlug(params.slug);
   const isPreview = slug.includes('preview');
-  const { contentNode } = await fetchGraphQL<{ contentNode: ContentNode }>(print(ContentInfoQuery), {
-    slug: isPreview ? slug.split('preview/')[1] : slug,
-    idType: isPreview ? 'DATABASE_ID' : 'URI',
+
+  const { page } = await fetchGraphQL<{ page: Page }>(print(PageQuery), {
+    id: 43,
   });
 
-  if (!contentNode) return notFound();
+  console.log('page', page);
+
+  // const { contentNode } = await fetchGraphQL<{ contentNode: ContentNode }>(print(ContentInfoQuery), {
+  //   slug: isPreview ? slug.split('preview/')[1] : slug,
+  //   idType: isPreview ? 'DATABASE_ID' : 'URI',
+  // });
+
+  // if (!contentNode) return notFound();
 
   // switch (contentNode.contentTypeName) {
   //   case "page":
