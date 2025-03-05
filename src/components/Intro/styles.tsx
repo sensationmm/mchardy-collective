@@ -30,7 +30,8 @@ export const Text = styled.p`
   margin: 0 0 30px 0;
   text-indent: 200px;
 
-  i {
+  i,
+  em {
     color: ${palette.primary.main};
     font-style: normal;
   }

@@ -4,12 +4,12 @@ import { useState } from 'react';
 import { Button } from '../Button';
 import * as Styled from './styles';
 
-type IHoverContentItem = {
+export type IHoverContentItem = {
   title: string;
   text: string;
 };
 
-type IHoverContent = {
+export type IHoverContent = {
   title: string;
   items: IHoverContentItem[];
 };

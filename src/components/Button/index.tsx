@@ -3,13 +3,14 @@ import * as Styled from './styles';
 
 type IButtonProps = {
   label: string;
-  link?: () => void;
+  link?: string;
+  target?: string;
   color?: string;
 };
 
-export const Button: React.FC<IButtonProps> = ({ label, link, color = palette.tertiary.dark }) => {
+export const Button: React.FC<IButtonProps> = ({ label, link, target, color = palette.tertiary.dark }) => {
   return (
-    <Styled.Button $color={color} onClick={link}>
+    <Styled.Button $color={color} href={link} target={target}>
       {label}
     </Styled.Button>
   );

@@ -1,15 +1,22 @@
+import { FC } from 'react';
 import { Button } from '../Button';
 import * as Styled from './styles';
 
-export const Intro = () => {
+export type IIntro = {
+  content: string;
+  cta: {
+    url: string;
+    title: string;
+    target: string;
+  };
+};
+
+export const Intro: FC<IIntro> = ({ content, cta }) => {
   return (
     <Styled.Container>
-      <Styled.Text>
-        McHardy Collective is <i>a catalyst for growth.</i> We are the go-to connector for brands and agencies seeking
-        to build lasting, <i>meaningful partnerships</i> that are mutually beneficial.
-      </Styled.Text>
+      <Styled.Text dangerouslySetInnerHTML={{ __html: content.replace(/<\/?p[^>]*>/g, '') || ' ' }} />
 
-      <Button label="Let's Connect" />
+      <Button label={cta.title} link={cta.url} target={cta.target} />
     </Styled.Container>
   );
 };

@@ -1,9 +1,9 @@
 'use client';
 
-import { palette } from '@/config/color';
 import styled from 'styled-components';
 
-export const Button = styled.button<{ $color: string }>`
+export const Button = styled.a<{ $color: string }>`
+  display: inline-block;
   border: ${({ $color = '' }) => `2px solid ${$color}`};
   padding: 15px 40px;
   text-transform: uppercase;
@@ -13,6 +13,8 @@ export const Button = styled.button<{ $color: string }>`
   color: ${({ $color = '' }) => $color};
   transform: scale(1);
   transition: all linear 0.1s;
+  text-decoration: none;
+  text-align: center;
 
   &:before,
   &:after {

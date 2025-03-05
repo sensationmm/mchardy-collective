@@ -7,19 +7,19 @@ import { setSeoData } from '@/utils/seoData';
 
 import { fetchGraphQL } from '@/utils/fetchGraphQL';
 import { ContentInfoQuery } from '@/queries/general/ContentInfoQuery';
-import { ContentNode, Page } from '@/gql/graphql';
+import { ContentNode, HomeFlexibleDisciplinesLayout, HomeFlexibleRevealTextLayout, Page } from '@/gql/graphql';
 import PageTemplate from '@/components/Templates/Page/PageTemplate';
 import { nextSlugToWpSlug } from '@/utils/nextSlugToWpSlug';
 import PostTemplate from '@/components/Templates/Post/PostTemplate';
 import { SeoQuery } from '@/queries/general/SeoQuery';
 import { Landing } from '@/components/Landing';
-import { Intro } from '@/components/Intro';
+import { IIntro, Intro } from '@/components/Intro';
 import { Boxes } from '@/components/Boxes';
-import { HoverContent } from '@/components/HoverContent';
+import { HoverContent, IHoverContent, IHoverContentItem } from '@/components/HoverContent';
 
 import * as Styled from './page.styles';
-import { Scroller } from '@/components/Scroller';
-import { Contact } from '@/components/Contact';
+import { IScroller, Scroller } from '@/components/Scroller';
+import { Contact, IContact } from '@/components/Contact';
 import { PageQuery } from '@/components/Templates/Page/PageQuery';
 
 // type Props = {
@@ -53,7 +53,7 @@ export function generateStaticParams() {
   return [];
 }
 
-export default async function HomePage() {
+export default async function HomePage(/*{ params }: Props*/) {
   // const slug = nextSlugToWpSlug(params.slug);
   // const isPreview = slug.includes('preview');
 
@@ -61,14 +61,9 @@ export default async function HomePage() {
     id: 43,
   });
 
-  console.log('page', page);
+  // console.log('page', page);
 
-  // const { contentNode } = await fetchGraphQL<{ contentNode: ContentNode }>(print(ContentInfoQuery), {
-  //   slug: isPreview ? slug.split('preview/')[1] : slug,
-  //   idType: isPreview ? 'DATABASE_ID' : 'URI',
-  // });
-
-  // if (!contentNode) return notFound();
+  if (!page) return notFound();
 
   // switch (contentNode.contentTypeName) {
   //   case "page":
@@ -84,7 +79,23 @@ export default async function HomePage() {
       <Landing />
 
       <Styled.Main>
-        <Intro />
+        {page.home?.flexible?.map((block) => {
+          if (block?.fieldGroupName === 'HomeFlexibleRevealTextLayout') {
+            const content = block as IIntro;
+            return <Intro key={`page-block-${block?.fieldGroupName}`} {...content} />;
+          } else if (block?.fieldGroupName === 'HomeFlexibleAgencyLayout') {
+          } else if (block?.fieldGroupName === 'HomeFlexibleBrandsLayout') {
+          } else if (block?.fieldGroupName === 'HomeFlexibleDisciplinesLayout') {
+            const content = block as IHoverContent;
+            return <HoverContent key={`page-block-${block?.fieldGroupName}`} {...content} />;
+          } else if (block?.fieldGroupName === 'HomeFlexibleTestimonialsLayout') {
+            const content = block as IScroller;
+            return <Scroller key={`page-block-${block?.fieldGroupName}`} {...content} />;
+          } else if (block?.fieldGroupName === 'HomeFlexibleFullWidthTextLayout') {
+            const content = block as IContact;
+            return <Contact key={`page-block-${block?.fieldGroupName}`} {...content} />;
+          }
+        })}
 
         <Boxes
           boxes={[
@@ -145,65 +156,6 @@ export default async function HomePage() {
               ),
             },
           ]}
-        />
-
-        <HoverContent
-          title='disciplines'
-          items={[
-            {
-              title: 'Creative Content',
-              text: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla.',
-            },
-            {
-              title: 'Event Creatives',
-              text: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Vestibulum id ligula porta felis euismod semper.',
-            },
-            {
-              title: 'Event Technologists',
-              text: 'Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.',
-            },
-            {
-              title: 'Brand Creators',
-              text: 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas eget quam.',
-            },
-            {
-              title: 'Audio Content',
-              text: 'Maecenas sed diam eget risus varius blandit sit amet non magna. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.',
-            },
-          ]}
-        />
-
-        <Scroller
-          title='Testimonials'
-          intro='Nullam quis risus eget urna mollis ornare vel eu leo.'
-          items={[
-            {
-              quote: 'richard was the match- maker we needed. His shortlist was so on point it was hard to decide',
-              attribution: 'Auto Trader UK CMO - Alex Andlaw',
-            },
-            {
-              quote: 'richard was the match- maker we needed. His shortlist was so on point it was hard to decide',
-              attribution: 'Auto Trader UK CMO - Alex Andlaw',
-            },
-            {
-              quote: 'richard was the match- maker we needed. His shortlist was so on point it was hard to decide',
-              attribution: 'Auto Trader UK CMO - Alex Andlaw',
-            },
-            {
-              quote: 'richard was the match- maker we needed. His shortlist was so on point it was hard to decide',
-              attribution: 'Auto Trader UK CMO - Alex Andlaw',
-            },
-          ]}
-        />
-
-        <Contact
-          intro={
-            <>
-              Let's connect and explore how <em>The McHardy Collective</em> can help you build lasting partnerships and
-              drive growth.
-            </>
-          }
-          text='Whether you’re looking to expand your network, explore new opportunities, or simply have a chat, I’d love to hear from you. Drop me a line, and let’s get the conversation started!'
         />
       </Styled.Main>
     </>
