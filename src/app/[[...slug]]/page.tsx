@@ -22,9 +22,9 @@ import { Scroller } from '@/components/Scroller';
 import { Contact } from '@/components/Contact';
 import { PageQuery } from '@/components/Templates/Page/PageQuery';
 
-type Props = {
-  params: { slug: string };
-};
+// type Props = {
+//   params: { slug: string };
+// };
 
 // export async function generateMetadata({ params }: Props): Promise<Metadata> {
 //   const slug = nextSlugToWpSlug(params.slug);
@@ -53,9 +53,9 @@ export function generateStaticParams() {
   return [];
 }
 
-export default async function HomePage({ params }: Props) {
-  const slug = nextSlugToWpSlug(params.slug);
-  const isPreview = slug.includes('preview');
+export default async function HomePage() {
+  // const slug = nextSlugToWpSlug(params.slug);
+  // const isPreview = slug.includes('preview');
 
   const { page } = await fetchGraphQL<{ page: Page }>(print(PageQuery), {
     id: 43,
