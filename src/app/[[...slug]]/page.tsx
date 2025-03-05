@@ -24,7 +24,6 @@ import { PageQuery } from '@/components/Templates/Page/PageQuery';
 
 type Props = {
   params: { slug: string };
-  node: ContentNode;
 };
 
 // export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -54,7 +53,7 @@ export function generateStaticParams() {
   return [];
 }
 
-export default async function HomePage({ params, node }: Props) {
+export default async function HomePage({ params }: Props) {
   const slug = nextSlugToWpSlug(params.slug);
   const isPreview = slug.includes('preview');
 
