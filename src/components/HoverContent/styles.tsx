@@ -25,6 +25,7 @@ export const Items = styled.ol`
   margin: 0;
   border-top: 1px solid ${palette.tertiary.light};
   margin-bottom: 50px;
+  z-index: 2;
 `;
 
 export const Item = styled.li`
@@ -79,6 +80,7 @@ export const ItemImageContainer = styled.div`
   transform: rotate(10deg) translateX(-150%);
   z-index: 20;
   transition: opacity linear 0.1s;
+  z-index: 1;
 `;
 
 export const ItemImage = styled.div`
