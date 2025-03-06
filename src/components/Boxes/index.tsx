@@ -4,14 +4,19 @@ import { ReactElement, useState } from 'react';
 import * as Styled from './styles';
 import { IPaletteItem, palette } from '@/config/color';
 import { Button } from '../Button';
-import { collectRoutesUsingEdgeRuntime } from 'next/dist/build/utils';
+import parse from 'html-react-parser';
 
 type IBoxContent = {
   title: string;
   intro: string;
-  textMain: ReactElement;
-  textSub: ReactElement;
-  textFooter: ReactElement;
+  heroText: ReactElement;
+  mainText: ReactElement;
+  strapline: ReactElement;
+  icon: {
+    node: {
+      sourceUrl: string;
+    };
+  };
 };
 
 interface IBox extends IBoxContent {
@@ -25,16 +30,17 @@ interface IBox extends IBoxContent {
   slideDir: 'left' | 'right';
 }
 
-type IBoxes = {
+export type IBoxes = {
   boxes: IBoxContent[];
 };
 
 const Box: React.FC<IBox> = ({
+  icon,
   title,
   intro,
-  textMain,
-  textSub,
-  textFooter,
+  heroText,
+  mainText,
+  strapline,
   color,
   bgcolor,
   onClick,
@@ -54,17 +60,18 @@ const Box: React.FC<IBox> = ({
     >
       <Styled.BoxCover $bgcolor={bgcolor} $opened={opened.toString()} $slidedir={slideDir}>
         <Styled.BoxMain>
+          <img src={icon.node.sourceUrl} />
           <Styled.BoxTitle color={color}>{title}</Styled.BoxTitle>
           <Styled.BoxIntro color={color}>{intro}</Styled.BoxIntro>
           <Button label='Discover More' color={color} />
         </Styled.BoxMain>
 
-        <Styled.BoxSub $color={color}>{textSub}</Styled.BoxSub>
+        <Styled.BoxSub $color={color}>{parse(mainText.toString())}</Styled.BoxSub>
       </Styled.BoxCover>
 
       <Styled.BoxBase $bgcolor={bgcolor.light}>
-        <div>{textMain}</div>
-        <Styled.BoxFooter>{textFooter}</Styled.BoxFooter>
+        <div>{parse(heroText.toString())}</div>
+        <Styled.BoxFooter>{strapline}</Styled.BoxFooter>
       </Styled.BoxBase>
     </Styled.Box>
   );

@@ -6,6 +6,18 @@ import styled from 'styled-components';
 export const Container = styled.div`
   max-width: 900px;
   margin: 0 auto;
+  padding: 120px 0;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    height: 100%;
+    transform: translateX(-50%);
+    background: #fff;
+  }
 `;
 
 export const Intro = styled.div`

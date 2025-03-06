@@ -10,10 +10,10 @@ export const PageQuery = gql`
         flexible {
           fieldGroupName
             ...on HomeFlexibleAgencyLayout {
-              slide {
+              boxes: slide {
                 icon {
                   node {
-                    uri
+                    sourceUrl
                   }
                 }
                 intro
@@ -24,7 +24,7 @@ export const PageQuery = gql`
               }
             }
             ...on HomeFlexibleRevealTextLayout {
-              cta {
+              button: cta {
                 url
                 title
                 target
@@ -32,7 +32,7 @@ export const PageQuery = gql`
               content
             }
             ...on HomeFlexibleDisciplinesLayout {
-              cta {
+              button: cta {
                 target
                 title
                 url

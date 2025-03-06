@@ -9,7 +9,7 @@ import { ContentNode, Page } from '@/gql/graphql';
 import { SeoQuery } from '@/queries/general/SeoQuery';
 import { Landing } from '@/components/Landing';
 import { IIntro, Intro } from '@/components/Intro';
-import { Boxes } from '@/components/Boxes';
+import { Boxes, IBoxes } from '@/components/Boxes';
 import { HoverContent, IHoverContent } from '@/components/HoverContent';
 
 import * as Styled from './page.styles';
@@ -53,7 +53,7 @@ export default async function HomePage(/*{ params }: Props*/) {
     id: 43,
   });
 
-  // console.log('page', page);
+  console.log('page', page);
 
   if (!page) return notFound();
 
@@ -67,7 +67,8 @@ export default async function HomePage(/*{ params }: Props*/) {
             const content = block as IIntro;
             return <Intro key={`page-block-${block?.fieldGroupName}`} {...content} />;
           } else if (block?.fieldGroupName === 'HomeFlexibleAgencyLayout') {
-          } else if (block?.fieldGroupName === 'HomeFlexibleBrandsLayout') {
+            const content = block as IBoxes;
+            return <Boxes key={`page-block-${block?.fieldGroupName}`} {...content} />;
           } else if (block?.fieldGroupName === 'HomeFlexibleDisciplinesLayout') {
             const content = block as IHoverContent;
             return <HoverContent key={`page-block-${block?.fieldGroupName}`} {...content} />;
@@ -79,67 +80,6 @@ export default async function HomePage(/*{ params }: Props*/) {
             return <Contact key={`page-block-${block?.fieldGroupName}`} {...content} />;
           }
         })}
-
-        <Boxes
-          boxes={[
-            {
-              title: 'Agencies',
-              intro: 'Are you an agency leader looking to grow and open up new business opportunities?',
-              textMain: (
-                <p>
-                  We help agencies build sustainable pipelines and drive real growth by connecting them with like-minded
-                  businesses.
-                </p>
-              ),
-              textSub: (
-                <>
-                  <p>
-                    Whether you’re a marketing chief, creative director, or part of the c-suite, we help you form
-                    partnerships that bring mutual success.
-                  </p>
-                  <p>
-                    From content and events to technology, branding, and audio, we connect businesses across the
-                    creative industries.
-                  </p>
-                </>
-              ),
-              textFooter: (
-                <p>
-                  At The McHardy Collective, we value genuine human connections, thrive on connecting the dots, and open
-                  doors to create new opportunities.
-                </p>
-              ),
-            },
-            {
-              title: 'Brands',
-              intro: 'Are you a brand looking to connect with the best creative talent around?',
-              textMain: (
-                <p>
-                  We help brands, from start-ups to global giants, tackle business challenges by connecting genuine,
-                  mutually beneficial partnerships.
-                </p>
-              ),
-              textSub: (
-                <>
-                  <p>
-                    Through one seamless partnership, you’ll access a curated network of top agencies across content,
-                    events, technology, branding, and audio.{' '}
-                  </p>
-                  <p>
-                    Every agency is hand-picked and proven, delivering cutting-edge, high-impact work with minimal risk
-                    and immediate value.
-                  </p>
-                </>
-              ),
-              textFooter: (
-                <p>
-                  At The McHardy Collective, we work hand-in-hand with marketing leaders, creative directors, and
-                  c-suite executives seeking trusted collaborators.
-                </p>
-              ),
-            },
-          ]}
-        />
       </Styled.Main>
     </>
   );

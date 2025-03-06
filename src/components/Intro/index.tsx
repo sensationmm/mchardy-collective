@@ -8,14 +8,14 @@ import { palette } from '@/config/color';
 
 export type IIntro = {
   content: string;
-  cta: {
+  button: {
     url: string;
     title: string;
     target: string;
   };
 };
 
-export const Intro: FC<IIntro> = ({ content, cta }) => {
+export const Intro: FC<IIntro> = ({ content, button }) => {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -85,7 +85,7 @@ export const Intro: FC<IIntro> = ({ content, cta }) => {
         </Styled.TextReveal>
       </div>
 
-      <Button label={cta.title} link={cta.url} target={cta.target} />
+      {button && <Button label={button.title} link={button.url} target={button.target} />}
     </Styled.Container>
   );
 };

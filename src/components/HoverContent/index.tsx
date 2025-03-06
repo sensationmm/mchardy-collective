@@ -12,9 +12,14 @@ export type IHoverContentItem = {
 export type IHoverContent = {
   title: string;
   items: IHoverContentItem[];
+  button: {
+    url: string;
+    title: string;
+    target: string;
+  };
 };
 
-export const HoverContent: React.FC<IHoverContent> = ({ title, items }) => {
+export const HoverContent: React.FC<IHoverContent> = ({ title, items, button }) => {
   const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0 });
   const [isHoverVisible, setIsHoverVisible] = useState(false);
 
@@ -53,7 +58,7 @@ export const HoverContent: React.FC<IHoverContent> = ({ title, items }) => {
         <Styled.ItemImage></Styled.ItemImage>
       </Styled.ItemImageContainer>
 
-      <Button label="Let's Connect" />
+      {button && <Button label={button.title} link={button.url} target={button.target} />}
     </Styled.Container>
   );
 };
