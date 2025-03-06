@@ -59,19 +59,19 @@ export default async function HomePage(/*{ params }: Props*/) {
 
   return (
     <>
-      {/* <Landing /> */}
+      <Landing />
 
       <Styled.Main>
         {page.home?.flexible?.map((block) => {
           if (block?.fieldGroupName === 'HomeFlexibleRevealTextLayout') {
             const content = block as IIntro;
-            // return <Intro key={`page-block-${block?.fieldGroupName}`} {...content} />;
+            return <Intro key={`page-block-${block?.fieldGroupName}`} {...content} />;
           } else if (block?.fieldGroupName === 'HomeFlexibleAgencyLayout') {
             const content = block as IBoxes;
-            // return <Boxes key={`page-block-${block?.fieldGroupName}`} {...content} />;
+            return <Boxes key={`page-block-${block?.fieldGroupName}`} {...content} />;
           } else if (block?.fieldGroupName === 'HomeFlexibleDisciplinesLayout') {
             const content = block as IHoverContent;
-            // return <HoverContent key={`page-block-${block?.fieldGroupName}`} {...content} />;
+            return <HoverContent key={`page-block-${block?.fieldGroupName}`} {...content} />;
           } else if (block?.fieldGroupName === 'HomeFlexibleTestimonialsLayout') {
             const content = block as IScroller;
             return <Scroller key={`page-block-${block?.fieldGroupName}`} {...content} />;
