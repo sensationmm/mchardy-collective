@@ -53,7 +53,7 @@ export default async function HomePage(/*{ params }: Props*/) {
     id: 43,
   });
 
-  console.log('page', page);
+  // console.log('page', page);
 
   if (!page) return notFound();
 

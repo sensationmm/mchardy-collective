@@ -16,6 +16,11 @@ export const Container = styled.div`
   > div:nth-child(2n) {
     transform-origin: center left;
   }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
 `;
 
 export const BoxesButton = styled.div`
@@ -46,6 +51,27 @@ export const Branding = styled(BoxesButton)`
 
   &:after {
     bottom: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 130px;
+    height: 50px;
+
+    &:before,
+    &:after {
+      width: 50px;
+      height: 50px;
+      top: 0;
+      left: auto;
+    }
+
+    &:before {
+      left: 0;
+    }
+
+    &:after {
+      right: 0;
+    }
   }
 `;
 
@@ -84,6 +110,11 @@ export const Trigger = styled(BoxesButton)<{ $bgcolor: string; $triggered: strin
     transform: translateX(-50%) translateY(-50%)
       rotate(${({ $triggered = 'false' }) => ($triggered === 'true' ? '-45deg' : '0deg')});
   }
+
+  @media screen and (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+  }
 `;
 
 export const Box = styled.div<{ $hovered: string; $opened: string }>`
@@ -97,6 +128,12 @@ export const BoxMain = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (max-width: 768px) {
+    img {
+      max-width: 100px;
+    }
+  }
 `;
 
 export const BoxSub = styled.div<{ $color: string }>`
@@ -108,6 +145,11 @@ export const BoxSub = styled.div<{ $color: string }>`
   font-size: 28px;
   text-align: center;
   color: ${({ $color = '' }) => $color};
+
+  @media screen and (max-width: 768px) {
+    padding: 0 30px;
+    font-size: 22px;
+  }
 `;
 
 export const BoxFooter = styled.div`
@@ -124,6 +166,7 @@ export const BoxCover = styled.div<{ $bgcolor: IPaletteItem; $opened: string; $s
   transform: ${({ $opened = 'false', $slidedir = 'left' }) =>
     $opened === 'true' ? `translateX(${$slidedir === 'right' ? '100%' : '-100%'})` : 'translateX(0%)'};
   z-index: 2;
+  height: 100%;
 
   &:before,
   &:after {
@@ -154,6 +197,18 @@ export const BoxCover = styled.div<{ $bgcolor: IPaletteItem; $opened: string; $s
   ${BoxSub} {
     opacity: ${({ $opened = 'false' }) => ($opened === 'true' ? 1 : 0)};
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 40px 30px;
+    transform: ${({ $opened = 'false', $slidedir = 'left' }) =>
+      $opened === 'true' ? `translateY(${$slidedir === 'right' ? '100%' : '-100%'})` : 'translateY(0%)'};
+
+    &:before,
+    &:after {
+      width: 75px;
+      height: 75px;
+    }
+  }
 `;
 
 export const BoxBase = styled.div<{ $bgcolor: string }>`
@@ -172,15 +227,29 @@ export const BoxBase = styled.div<{ $bgcolor: string }>`
   p {
     margin: 0;
   }
+
+  @media screen and (max-width: 768px) {
+    font-size: 30px;
+    padding: 30px;
+  }
 `;
 
 export const BoxTitle = styled.h2<{ color: string }>`
   font-size: 48px;
   color: ${({ color = '' }) => color};
+
+  @media screen and (max-width: 768px) {
+    font-size: 38px;
+    margin: 10px 0;
+  }
 `;
 
 export const BoxIntro = styled.p<{ color: string }>`
   font-size: 24px;
   color: ${({ color = '' }) => color};
   text-align: center;
+
+  @media screen and (max-width: 768px) {
+    margin: 0 0 10px 0;
+  }
 `;

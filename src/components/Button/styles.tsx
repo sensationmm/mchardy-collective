@@ -38,4 +38,9 @@ export const Button = styled.a<{ $color: string }>`
   &:hover {
     transform: scale(1.05);
   }
+
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+    padding: 10px 30px;
+  }
 `;

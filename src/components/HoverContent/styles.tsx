@@ -17,6 +17,10 @@ export const Container = styled.div`
 export const Header = styled.h2`
   font-size: 220px;
   margin: 0;
+
+  @media screen and (max-width: 768px) {
+    font-size: 60px;
+  }
 `;
 
 export const Items = styled.ol`
@@ -59,6 +63,12 @@ export const Item = styled.li`
       bottom: 0;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    display: block;
+    margin-bottom: 20px;
+    padding: 0 0 20px 0;
+  }
 `;
 
 export const ItemCount = styled.div`
@@ -68,6 +78,11 @@ export const ItemCount = styled.div`
 export const ItemTitle = styled.div`
   font-size: 64px;
   text-align: center;
+
+  @media screen and (max-width: 768px) {
+    font-size: 36px;
+    text-align: left;
+  }
 `;
 
 export const ItemText = styled.div`

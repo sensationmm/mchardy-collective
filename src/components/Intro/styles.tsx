@@ -14,14 +14,27 @@ export const Container = styled.div`
     height: 15px;
     background: ${palette.tertiary.dark};
     left: 0;
+
+    @media screen and (max-width: 768px) {
+      width: 7px;
+      height: 7px;
+    }
   }
 
   &:before {
     top: 20px;
+
+    @media screen and (max-width: 768px) {
+      top: 15px;
+    }
   }
 
   &:after {
     top: 50px;
+
+    @media screen and (max-width: 768px) {
+      top: 30px;
+    }
   }
 `;
 
@@ -35,6 +48,11 @@ export const Text = styled.div`
   em {
     /* color: ${palette.primary.main}; */
     font-style: normal;
+  }
+
+  @media screen and (max-width: 768px) {
+    text-indent: 30px;
+    font-size: 42px;
   }
 `;
 

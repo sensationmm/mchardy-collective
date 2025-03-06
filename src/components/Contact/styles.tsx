@@ -18,6 +18,10 @@ export const Container = styled.div`
     transform: translateX(-50%);
     background: #fff;
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 50px 0;
+  }
 `;
 
 export const Intro = styled.div`
@@ -29,16 +33,29 @@ export const Intro = styled.div`
     color: ${palette.primary.main};
     font-style: normal;
   }
+
+  @media screen and (max-width: 768px) {
+    font-size: 35px;
+    margin-bottom: 30px;
+  }
 `;
 
 export const Text = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 40px;
+
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
 `;
 
 export const Buttons = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 20px;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 20px;
+  }
 `;
