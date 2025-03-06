@@ -10,28 +10,18 @@ export const PageQuery = gql`
         flexible {
           fieldGroupName
             ...on HomeFlexibleAgencyLayout {
-              icon {
-                node {
-                  uri
+              slide {
+                icon {
+                  node {
+                    uri
+                  }
                 }
+                intro
+                title
+                heroText
+                mainText
+                strapline
               }
-              intro
-              title
-              heroText
-              mainText
-              strapline
-            }
-          	...on HomeFlexibleBrandsLayout {
-              icon {
-                node {
-                  uri
-                }
-              }
-              intro
-              title
-              heroText
-              mainText
-              strapline
             }
             ...on HomeFlexibleRevealTextLayout {
               cta {
