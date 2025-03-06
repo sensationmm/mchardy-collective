@@ -1,6 +1,10 @@
+'use client';
+
 import { FC } from 'react';
 import * as Styled from './styles';
 import { palette } from '@/config/color';
+import { animated, useSpring } from 'react-spring';
+import { useScroll } from 'react-use-gesture';
 
 type IScrollerItem = {
   quote: string;
@@ -28,19 +32,39 @@ const ScrollItem: FC<IScrollerItem> = ({ quote, author, bgColor }) => {
 export const Scroller: FC<IScroller> = ({ title, intro, items = [] }) => {
   const colors: Array<string> = [palette.secondary.light, palette.secondary.main, palette.primary.light, '#fff'];
 
+  const [style, set] = useSpring(() => ({
+    transform: 'perspective(500px) rotateY(0deg)',
+  }));
+
+  const clamp = (value: number, clampAt: number = 10) => {
+    if (value > 0) {
+      return value > clampAt ? clampAt : value;
+    } else {
+      return value < -clampAt ? -clampAt : value;
+    }
+  };
+
+  const bind = useScroll((event) => {
+    set({
+      transform: `perspective(500px) rotateY(${event.scrolling ? clamp(event.delta[0]) : 0}deg)`,
+    });
+  });
+
   return (
-    <div>
+    <Styled.Container>
       <Styled.Title>{title}</Styled.Title>
       <Styled.Intro>{intro}</Styled.Intro>
-      <Styled.Slider>
-        {items && items.length > 0 && (
-          <Styled.SliderInner $numSlides={items.length}>
-            {items.map((item, count) => {
-              return <ScrollItem key={`scroller-item-${count}`} {...item} bgColor={colors[count % colors.length]} />;
-            })}
-          </Styled.SliderInner>
-        )}
+      <Styled.Slider {...bind()}>
+        {items &&
+          items.length > 0 &&
+          items.map((item, count) => {
+            return (
+              <animated.div key={`scroller-item-${count}`} style={{ ...style }}>
+                <ScrollItem {...item} bgColor={colors[count % colors.length]} />
+              </animated.div>
+            );
+          })}
       </Styled.Slider>
-    </div>
+    </Styled.Container>
   );
 };

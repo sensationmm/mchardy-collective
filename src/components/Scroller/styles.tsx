@@ -3,6 +3,12 @@
 import { palette } from '@/config/color';
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 export const Title = styled.h2`
   font-size: 64px;
   text-align: center;
@@ -25,8 +31,10 @@ export const Intro = styled.p`
 `;
 
 export const Slider = styled.div`
-  overflow-x: auto;
-  padding: 10px 10px 60px 10px;
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+  padding: 30px 10px 60px 10px;
 
   @media screen and (max-width: 768px) {
     padding-bottom: 0px;
@@ -51,6 +59,7 @@ export const Item = styled.div<{ $bgcolor: string }>`
   justify-content: center;
   width: 450px;
   height: 540px;
+  margin: 0 10px;
   background-color: ${({ $bgcolor = '' }) => $bgcolor};
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   white-space: normal;
