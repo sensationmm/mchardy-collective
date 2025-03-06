@@ -17,7 +17,7 @@ export const Container = styled.div`
     transform-origin: center left;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 1fr);
   }
@@ -53,7 +53,7 @@ export const Branding = styled(BoxesButton)`
     bottom: 0;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     width: 130px;
     height: 50px;
 
@@ -111,7 +111,7 @@ export const Trigger = styled(BoxesButton)<{ $bgcolor: string; $triggered: strin
       rotate(${({ $triggered = 'false' }) => ($triggered === 'true' ? '-45deg' : '0deg')});
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     width: 50px;
     height: 50px;
   }
@@ -129,7 +129,7 @@ export const BoxMain = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     img {
       max-width: 100px;
     }
@@ -146,7 +146,7 @@ export const BoxSub = styled.div<{ $color: string }>`
   text-align: center;
   color: ${({ $color = '' }) => $color};
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     padding: 0 30px;
     font-size: 22px;
   }
@@ -198,7 +198,7 @@ export const BoxCover = styled.div<{ $bgcolor: IPaletteItem; $opened: string; $s
     opacity: ${({ $opened = 'false' }) => ($opened === 'true' ? 1 : 0)};
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     padding: 40px 30px;
     transform: ${({ $opened = 'false', $slidedir = 'left' }) =>
       $opened === 'true' ? `translateY(${$slidedir === 'right' ? '100%' : '-100%'})` : 'translateY(0%)'};
@@ -228,7 +228,7 @@ export const BoxBase = styled.div<{ $bgcolor: string }>`
     margin: 0;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     font-size: 30px;
     padding: 30px;
   }
@@ -238,7 +238,7 @@ export const BoxTitle = styled.h2<{ color: string }>`
   font-size: 48px;
   color: ${({ color = '' }) => color};
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     font-size: 38px;
     margin: 10px 0;
   }
@@ -249,7 +249,7 @@ export const BoxIntro = styled.p<{ color: string }>`
   color: ${({ color = '' }) => color};
   text-align: center;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     margin: 0 0 10px 0;
   }
 `;

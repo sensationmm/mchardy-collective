@@ -18,6 +18,14 @@ export const Header = styled.h2`
   font-size: 220px;
   margin: 0;
 
+  @media screen and (max-width: 1350px) {
+    font-size: 160px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 120px;
+  }
+
   @media screen and (max-width: 768px) {
     font-size: 60px;
   }

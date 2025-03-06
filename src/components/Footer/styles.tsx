@@ -17,6 +17,14 @@ export const Container = styled.footer`
     font-family: 'bell-centennial-std-bold-lis', sans-serif;
     line-height: 1;
     text-align: center;
+
+    @media screen and (max-width: 768px) {
+      font-size: 100px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 30px 0 150px 0;
   }
 `;
 
@@ -34,6 +42,11 @@ export const Logo = styled.div`
   font-size: 40px;
   font-family: 'bell-centennial-std-bold-lis', sans-serif;
   margin-bottom: 100px;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 30px;
+    font-size: 30px;
+  }
 `;
 
 export const SocialHeader = styled.div`
@@ -41,6 +54,10 @@ export const SocialHeader = styled.div`
   color: #fff;
   font-family: 'bell-centennial-std-bold-lis', sans-serif;
   margin-bottom: 20px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 export const SocialItem = styled.div`

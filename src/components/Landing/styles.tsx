@@ -16,6 +16,10 @@ export const Container = styled.div<{ $height: number; $width: number }>`
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+
+  @media screen and (max-width: 768px) {
+    min-width: 100%;
+  }
 `;
 
 export const Title = styled.h1<{ $size: number }>`
