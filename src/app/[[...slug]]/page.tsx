@@ -1,21 +1,16 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { print } from 'graphql/language/printer';
-import gql from 'graphql-tag';
 
 import { setSeoData } from '@/utils/seoData';
 
 import { fetchGraphQL } from '@/utils/fetchGraphQL';
-import { ContentInfoQuery } from '@/queries/general/ContentInfoQuery';
-import { ContentNode, HomeFlexibleDisciplinesLayout, HomeFlexibleRevealTextLayout, Page } from '@/gql/graphql';
-import PageTemplate from '@/components/Templates/Page/PageTemplate';
-import { nextSlugToWpSlug } from '@/utils/nextSlugToWpSlug';
-import PostTemplate from '@/components/Templates/Post/PostTemplate';
+import { ContentNode, Page } from '@/gql/graphql';
 import { SeoQuery } from '@/queries/general/SeoQuery';
 import { Landing } from '@/components/Landing';
 import { IIntro, Intro } from '@/components/Intro';
 import { Boxes } from '@/components/Boxes';
-import { HoverContent, IHoverContent, IHoverContentItem } from '@/components/HoverContent';
+import { HoverContent, IHoverContent } from '@/components/HoverContent';
 
 import * as Styled from './page.styles';
 import { IScroller, Scroller } from '@/components/Scroller';
@@ -54,9 +49,6 @@ export function generateStaticParams() {
 }
 
 export default async function HomePage(/*{ params }: Props*/) {
-  // const slug = nextSlugToWpSlug(params.slug);
-  // const isPreview = slug.includes('preview');
-
   const { page } = await fetchGraphQL<{ page: Page }>(print(PageQuery), {
     id: 43,
   });
@@ -64,15 +56,6 @@ export default async function HomePage(/*{ params }: Props*/) {
   // console.log('page', page);
 
   if (!page) return notFound();
-
-  // switch (contentNode.contentTypeName) {
-  //   case "page":
-  //     return <PageTemplate node={contentNode} />;
-  //   case "post":
-  //     return <PostTemplate node={contentNode} />;
-  //   default:
-  //     return <p>{contentNode.contentTypeName} not implemented</p>;
-  // }
 
   return (
     <>
