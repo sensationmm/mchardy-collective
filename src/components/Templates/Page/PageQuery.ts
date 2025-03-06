@@ -53,7 +53,6 @@ export const PageQuery = gql`
                     uri
                   }
                 }
-                number
                 text: summary
                 title
               }
