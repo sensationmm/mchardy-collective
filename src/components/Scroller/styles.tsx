@@ -22,7 +22,7 @@ export const Title = styled.h2`
 export const Intro = styled.p`
   font-size: 18px;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   color: ${palette.tertiary.main};
 
   @media screen and (max-width: 768px) {
@@ -38,6 +38,7 @@ export const Slider = styled.div`
 
   @media screen and (max-width: 768px) {
     padding-bottom: 0px;
+    display: block;
   }
 `;
 
@@ -86,7 +87,7 @@ export const Item = styled.div<{ $bgcolor: string }>`
   @media screen and (max-width: 768px) {
     width: 100%;
     height: auto;
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
     padding: 30px 30px 50px 30px;
 
     &:before,
