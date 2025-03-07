@@ -5,6 +5,7 @@ import * as Styled from './styles';
 import { palette } from '@/config/color';
 import { animated, useSpring } from 'react-spring';
 import { useScroll } from 'react-use-gesture';
+import parse from 'html-react-parser';
 
 type IScrollerItem = {
   quote: string;
@@ -24,7 +25,7 @@ const ScrollItem: FC<IScrollerItem> = ({ quote, author, bgColor }) => {
   return (
     <Styled.Item $bgcolor={bgColor}>
       <Styled.ItemQuote>“{quote}”</Styled.ItemQuote>
-      <Styled.ItemAttr>{author}</Styled.ItemAttr>
+      <Styled.ItemAttr>{parse(author)}</Styled.ItemAttr>
     </Styled.Item>
   );
 };

@@ -34,7 +34,7 @@ export const Slider = styled.div`
   display: flex;
   width: 100%;
   overflow-x: scroll;
-  padding: 30px 10px 60px 10px;
+  padding: 30px 10px 30px 10px;
 
   @media screen and (max-width: 768px) {
     padding-bottom: 0px;
@@ -101,6 +101,7 @@ export const Item = styled.div<{ $bgcolor: string }>`
 export const ItemQuote = styled.blockquote`
   font-size: 36px;
   text-align: center;
+  margin: 0 40px 20px 40px;
 
   @media screen and (max-width: 768px) {
     margin: 20px 0 0;
@@ -111,4 +112,5 @@ export const ItemAttr = styled.cite`
   font-size: 14px;
   font-style: normal;
   text-transform: uppercase;
+  text-align: center;
 `;
