@@ -57,12 +57,15 @@ const Box: React.FC<IBox> = ({
       onMouseOut={onMouseOut}
       $opened={opened.toString()}
       $hovered={hovered.toString()}
+      onTouchStart={onClick}
     >
       <Styled.BoxCover $bgcolor={bgcolor} $opened={opened.toString()} $slidedir={slideDir}>
         <Styled.BoxMain>
           <img src={icon.node.sourceUrl} />
-          <Styled.BoxTitle color={color}>{title}</Styled.BoxTitle>
-          <Styled.BoxIntro color={color}>{intro}</Styled.BoxIntro>
+          <div>
+            <Styled.BoxTitle color={color}>{title}</Styled.BoxTitle>
+            <Styled.BoxIntro color={color}>{intro}</Styled.BoxIntro>
+          </div>
           <Button label='Discover More' color={color} />
         </Styled.BoxMain>
 

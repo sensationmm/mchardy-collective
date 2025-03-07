@@ -128,6 +128,16 @@ export const BoxMain = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  height: 100%;
+
+  h2 {
+    margin: 20px 0 0 0;
+  }
+
+  p {
+    margin: 0 0 20px 0;
+  }
 
   @media screen and (max-width: 1024px) {
     img {
@@ -237,6 +247,7 @@ export const BoxBase = styled.div<{ $bgcolor: string }>`
 export const BoxTitle = styled.h2<{ color: string }>`
   font-size: 48px;
   color: ${({ color = '' }) => color};
+  text-align: center;
 
   @media screen and (max-width: 1024px) {
     font-size: 38px;
