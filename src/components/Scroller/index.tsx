@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import * as Styled from './styles';
 import { palette } from '@/config/color';
 import { animated, useSpring } from 'react-spring';
@@ -31,6 +31,9 @@ const ScrollItem: FC<IScrollerItem> = ({ quote, author, bgColor }) => {
 };
 
 export const Scroller: FC<IScroller> = ({ title, intro, items = [] }) => {
+  const SliderRef = useRef<HTMLDivElement>(null);
+  const SliderItemsRef = useRef<HTMLDivElement>(null);
+  const [trackLeft, setTrackLeft] = useState<number | undefined>(undefined);
   const colors: Array<string> = [palette.secondary.light, palette.secondary.main, palette.primary.light, '#fff'];
 
   const [style, set] = useSpring(() => ({
@@ -49,23 +52,30 @@ export const Scroller: FC<IScroller> = ({ title, intro, items = [] }) => {
     set({
       transform: `perspective(500px) rotateY(${event.scrolling ? clamp(event.delta[0]) : 0}deg)`,
     });
+
+    setTrackLeft((event.offset[0] / 1073) * 100);
   });
 
   return (
     <Styled.Container>
       <Styled.Title>{title}</Styled.Title>
       <Styled.Intro>{intro}</Styled.Intro>
-      <Styled.Slider {...bind()}>
-        {items &&
-          items.length > 0 &&
-          items.map((item, count) => {
-            return (
-              <animated.div key={`scroller-item-${count}`} style={{ ...style }}>
-                <ScrollItem {...item} bgColor={colors[count % colors.length]} />
-              </animated.div>
-            );
-          })}
+      <Styled.Slider ref={SliderRef} {...bind()}>
+        <Styled.SliderInner ref={SliderItemsRef} $numSlides={items.length}>
+          {items &&
+            items.length > 0 &&
+            items.map((item, count) => {
+              return (
+                <animated.div key={`scroller-item-${count}`} style={{ ...style }}>
+                  <ScrollItem {...item} bgColor={colors[count % colors.length]} />
+                </animated.div>
+              );
+            })}
+        </Styled.SliderInner>
       </Styled.Slider>
+      <Styled.SliderTrack>
+        <Styled.SliderTrackPip style={{ left: `${trackLeft}%` }} />
+      </Styled.SliderTrack>
     </Styled.Container>
   );
 };

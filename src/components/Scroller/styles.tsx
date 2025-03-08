@@ -53,6 +53,19 @@ export const SliderInner = styled.div<{ $numSlides: number }>`
   }
 `;
 
+export const SliderTrack = styled.div`
+  height: 10px;
+  width: 200px;
+  background: ${palette.tertiary.light};
+  margin: 0 auto;
+`;
+
+export const SliderTrackPip = styled.div`
+  width: 10px;
+  height: 10px;
+  background: ${palette.tertiary.dark};
+`;
+
 export const Item = styled.div<{ $bgcolor: string }>`
   display: flex;
   flex-direction: column;
