@@ -1,10 +1,10 @@
 'use client';
 
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useRef, useState } from 'react';
 import * as Styled from './styles';
 import { palette } from '@/config/color';
 import { animated, useSpring } from 'react-spring';
-import { useScroll } from 'react-use-gesture';
+import { useScroll } from '@use-gesture/react';
 import parse from 'html-react-parser';
 
 type IScrollerItem = {
@@ -53,7 +53,9 @@ export const Scroller: FC<IScroller> = ({ title, intro, items = [] }) => {
       transform: `perspective(500px) rotateY(${event.scrolling ? clamp(event.delta[0]) : 0}deg)`,
     });
 
-    setTrackLeft((event.offset[0] / 1073) * 100);
+    if (SliderItemsRef.current && SliderRef.current) {
+      setTrackLeft((event.offset[0] / (SliderItemsRef.current.clientWidth - SliderRef.current.clientWidth + 20)) * 100);
+    }
   });
 
   return (

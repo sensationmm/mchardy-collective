@@ -8,6 +8,7 @@
     "codegen": "graphql-codegen --config codegen.ts && node ./add-ts-nocheck.js"
   },
   "dependencies": {
+    "@use-gesture/react": "^10.3.1",
     "graphql": "^16.9.0",
     "graphql-tag": "^2.12.6",
     "html-react-parser": "^5.2.2",
@@ -15,7 +16,6 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-spring": "^9.7.5",
-    "react-use-gesture": "^9.1.3",
     "styled-components": "^6.1.15"
   },
   "devDependencies": {
