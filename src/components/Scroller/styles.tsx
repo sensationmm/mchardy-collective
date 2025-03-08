@@ -4,6 +4,7 @@ import { palette } from '@/config/color';
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  margin: 0 -20px;
   ::-webkit-scrollbar {
     display: none;
   }
