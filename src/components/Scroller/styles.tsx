@@ -118,7 +118,7 @@ export const Item = styled.div<{ $bgcolor: string }>`
 `;
 
 export const ItemQuote = styled.blockquote`
-  font-size: 36px;
+  font-size: 28px;
   text-align: center;
   margin: 0 40px 20px 40px;
 
