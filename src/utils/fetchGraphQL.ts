@@ -21,7 +21,7 @@ export async function fetchGraphQL<T = any>(
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Cache-Control": "no-cache, must-revalidate, max-age=0",
+          "Cache-Control": "public, no-cache, must-revalidate, max-age=0",
           ...(authHeader && { Authorization: authHeader }),
           ...headers,
         },
