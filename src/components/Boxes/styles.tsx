@@ -7,7 +7,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
 
   > div:nth-child(2n -1) {
     transform-origin: center right;
@@ -75,7 +75,8 @@ export const Branding = styled(BoxesButton)`
   }
 `;
 
-export const Trigger = styled(BoxesButton)<{ $bgcolor: string; $triggered: string }>`
+export const Trigger = styled(BoxesButton)<{ $bgcolor: string; $triggered: string; $hovered: string }>`
+  opacity: ${({ $hovered = 'false' }) => ($hovered === 'true' ? 1 : 0)};
   background: #fff;
   width: 74px;
   height: 74px;
@@ -118,9 +119,7 @@ export const Trigger = styled(BoxesButton)<{ $bgcolor: string; $triggered: strin
 `;
 
 export const Box = styled.div<{ $hovered: string; $opened: string }>`
-  transform: ${({ $hovered = 'false' }) => ($hovered === 'true' ? 'scale(1.05)' : 'scale(1)')};
   z-index: ${({ $hovered = 'false', $opened = 'false' }) => ($hovered === 'true' || $opened === 'true' ? '2' : '1')};
-  transition: all linear 0.1s;
   cursor: pointer;
 `;
 
@@ -162,6 +161,19 @@ export const BoxSub = styled.div<{ $color: string }>`
   }
 `;
 
+export const BoxBackground = styled.div<{ $bgcolor: IPaletteItem; $hovered: string; $opened: string }>`
+  background: ${({ $bgcolor }) => $bgcolor.main};
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  transform-origin: center;
+  transform: ${({ $hovered = 'false' }) => ($hovered === 'true' ? 'scale(1.05)' : 'scale(1)')};
+  transition: all linear 0.1s;
+  display: ${({ $opened = 'false' }) => ($opened === 'true' ? 'none' : 'block')};
+`;
+
 export const BoxFooter = styled.div`
   font-size: 18px;
 `;
@@ -172,7 +184,7 @@ export const BoxCover = styled.div<{ $bgcolor: IPaletteItem; $opened: string; $s
   align-items: center;
   background: ${({ $bgcolor }) => $bgcolor.main};
   padding: 50px 100px;
-  transition: all ease-out 0.5s;
+  transition: all ease-in-out 0.5s;
   transform: ${({ $opened = 'false', $slidedir = 'left' }) =>
     $opened === 'true' ? `translateX(${$slidedir === 'right' ? '100%' : '-100%'})` : 'translateX(0%)'};
   z-index: 2;

@@ -76,6 +76,7 @@ const Box: React.FC<IBox> = ({
         <div>{parse(heroText.toString())}</div>
         <Styled.BoxFooter>{strapline}</Styled.BoxFooter>
       </Styled.BoxBase>
+      <Styled.BoxBackground $bgcolor={bgcolor} $hovered={hovered.toString()} $opened={opened.toString()} />
     </Styled.Box>
   );
 };
@@ -111,15 +112,12 @@ export const Boxes: React.FC<IBoxes> = ({ boxes }) => {
         slideDir='left'
       />
 
-      {hovered === 0 && opened === 0 ? (
-        <Styled.Branding />
-      ) : (
-        <Styled.Trigger
-          $bgcolor={boxColor[hovered].main || boxColor[opened].main}
-          $triggered={(opened !== 0).toString()}
-          onClick={() => setOpened(0)}
-        />
-      )}
+      <Styled.Trigger
+        $bgcolor={boxColor[hovered].main || boxColor[opened].main}
+        $triggered={(opened !== 0).toString()}
+        $hovered={(hovered !== 0 || opened !== 0).toString()}
+        onClick={() => setOpened(0)}
+      />
     </Styled.Container>
   );
 };
