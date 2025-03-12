@@ -28,7 +28,6 @@ export async function fetchGraphQL<T = any>(
         cache: "default",
         next: {
           tags: ["wordpress"],
-          revalidate: 0
         },
       },
     );
