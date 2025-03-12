@@ -145,15 +145,19 @@ export const BoxMain = styled.div`
   }
 `;
 
-export const BoxSub = styled.div<{ $color: string }>`
+export const BoxSub = styled.div<{ $color: string; $opened: string }>`
   position: absolute;
   width: 100%;
   padding: 0 100px;
   top: 50%;
-  transform: translateY(-50%);
+  /* transform: translateY(-50%); */
   font-size: 28px;
   text-align: center;
   color: ${({ $color = '' }) => $color};
+
+  transform: ${({ $opened = 'false' }) => ($opened === 'true' ? 'translateY(-50%)' : 'translateY(-40%)')};
+  opacity: ${({ $opened = 'false' }) => ($opened === 'true' ? 1 : 0)};
+  transition: ${({ $opened = 'false' }) => ($opened === 'true' ? 'all linear 0.3s 0.5s' : 'all linear 0s 0s')};
 
   @media screen and (max-width: 1024px) {
     padding: 0 30px;
@@ -237,10 +241,6 @@ export const BoxBase = styled.div<{ $bgcolor: string }>`
   position: absolute;
   top: 0;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
   background: ${({ $bgcolor = '' }) => $bgcolor};
   padding: 50px;
   z-index: 1;
@@ -254,6 +254,17 @@ export const BoxBase = styled.div<{ $bgcolor: string }>`
     font-size: 30px;
     padding: 30px;
   }
+`;
+
+export const BoxBaseInner = styled.div<{ $opened: string }>`
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transform: ${({ $opened = 'false' }) => ($opened === 'true' ? 'translateY(0)' : 'translateY(20px)')};
+  opacity: ${({ $opened = 'false' }) => ($opened === 'true' ? 1 : 0)};
+  transition: ${({ $opened = 'false' }) => ($opened === 'true' ? 'all linear 0.3s 0.5s' : 'all linear 0s 0s')};
 `;
 
 export const BoxTitle = styled.h2<{ color: string }>`

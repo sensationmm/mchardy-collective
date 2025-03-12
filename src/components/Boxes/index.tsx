@@ -69,12 +69,16 @@ const Box: React.FC<IBox> = ({
           <Button label='Discover More' color={color} />
         </Styled.BoxMain>
 
-        <Styled.BoxSub $color={color}>{parse(mainText.toString())}</Styled.BoxSub>
+        <Styled.BoxSub $opened={opened.toString()} $color={color}>
+          {parse(mainText.toString())}
+        </Styled.BoxSub>
       </Styled.BoxCover>
 
       <Styled.BoxBase $bgcolor={bgcolor.light}>
-        <div>{parse(heroText.toString())}</div>
-        <Styled.BoxFooter>{strapline}</Styled.BoxFooter>
+        <Styled.BoxBaseInner $opened={opened.toString()}>
+          <div>{parse(heroText.toString())}</div>
+          <Styled.BoxFooter>{strapline}</Styled.BoxFooter>
+        </Styled.BoxBaseInner>
       </Styled.BoxBase>
       <Styled.BoxBackground $bgcolor={bgcolor} $hovered={hovered.toString()} $opened={opened.toString()} />
     </Styled.Box>
