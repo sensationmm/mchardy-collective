@@ -40,7 +40,7 @@ export const PageQuery = gql`
               items: content {
                 image {
                   node {
-                    uri
+                    sourceUrl
                   }
                 }
                 text: summary
