@@ -18,7 +18,7 @@ export const Footer: React.FC<IFooter> = ({ contact, linkedin }) => {
           </a>
         </Styled.SocialItem>
         <Styled.SocialItem>
-          <a href={`mailto:${contact}`}>{contact}</a>
+          <a href={`mailto:${contact}?subject=Let's Talk`}>{contact}</a>
         </Styled.SocialItem>
       </Styled.Inner>
 
