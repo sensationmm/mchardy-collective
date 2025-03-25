@@ -38,7 +38,7 @@ export const Landing: React.FC<ILanding> = ({ contact }) => {
         <Styled.TitleSmall $visible={isSmallNav.toString()}>M&nbsp;&nbsp;:&nbsp;&nbsp;C</Styled.TitleSmall>
       </Styled.Title>
 
-      <Styled.Contact $visible={isSmallNav.toString()} href={`mailto:${contact}?subject=Let's+Talk`}>
+      <Styled.Contact $visible={isSmallNav.toString()} href={`mailto:${contact}?subject=Let's%20Talk`}>
         Contact
       </Styled.Contact>
     </Styled.Container>
