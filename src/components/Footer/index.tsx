@@ -24,7 +24,7 @@ export const Footer: React.FC<IFooter> = ({ contact, linkedin }) => {
 
       <Styled.Copyright>
         <div>&copy; 2025</div>
-        <div>McHardyCollective.com</div>
+        <div>McHardyCollective.co.uk</div>
         <div>All rights reserved</div>
       </Styled.Copyright>
     </Styled.Container>
