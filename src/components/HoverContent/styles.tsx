@@ -99,6 +99,7 @@ export const ItemTitle = styled.div`
   @media screen and (max-width: 768px) {
     font-size: 36px;
     text-align: left;
+    margin-bottom: 10px;
   }
 `;
 
@@ -113,7 +114,7 @@ export const ItemThumb = styled.div`
   max-height: 200px;
   display: none;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 
   img {
     object-fit: cover;
