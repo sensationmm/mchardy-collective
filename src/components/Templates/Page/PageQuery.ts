@@ -52,7 +52,6 @@ export const PageQuery = gql`
             }
             ...on HomeFlexibleTestimonialsLayout {
               title
-              intro: strapline
               items: testimonials {
                 quote
                 author

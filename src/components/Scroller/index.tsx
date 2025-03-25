@@ -61,7 +61,6 @@ export const Scroller: FC<IScroller> = ({ title, intro, items = [] }) => {
   return (
     <Styled.Container>
       <Styled.Title>{title}</Styled.Title>
-      <Styled.Intro>{intro}</Styled.Intro>
       <Styled.Slider ref={SliderRef} {...bind()}>
         <Styled.SliderInner ref={SliderItemsRef} $numSlides={items.length}>
           {items &&

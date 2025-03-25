@@ -13,7 +13,7 @@ export const Container = styled.div`
 export const Title = styled.h2`
   font-size: 64px;
   text-align: center;
-  margin: 0;
+  margin: 0 0 30px 0;
 
   @media screen and (max-width: 768px) {
     font-size: 40px;
