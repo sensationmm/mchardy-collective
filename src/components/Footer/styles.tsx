@@ -6,6 +6,7 @@ import styled from 'styled-components';
 export const Container = styled.footer`
   background: ${palette.primary.main};
   padding: 60px 0 350px 0;
+  overflow: hidden;
 
   &:after {
     content: 'McHardy';

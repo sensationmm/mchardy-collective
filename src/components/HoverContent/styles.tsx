@@ -38,6 +38,10 @@ export const Items = styled.ol`
   border-top: 1px solid ${palette.tertiary.light};
   margin-bottom: 50px;
   z-index: 2;
+
+  @media screen and (max-width: 768px) {
+    padding-top: 20px;
+  }
 `;
 
 export const Item = styled.li`
@@ -79,6 +83,11 @@ export const Item = styled.li`
   }
 `;
 
+export const ItemCountWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const ItemCount = styled.div`
   font-size: 64px;
 `;
@@ -95,6 +104,26 @@ export const ItemTitle = styled.div`
 
 export const ItemText = styled.div`
   font-size: 18px;
+`;
+
+export const ItemThumb = styled.div`
+  width: 60%;
+  aspect-ratio: 1 / 1;
+  max-width: 200px;
+  max-height: 200px;
+  display: none;
+  position: relative;
+  margin-bottom: 30px;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
 `;
 
 export const ItemImageContainer = styled.div`
@@ -134,6 +163,10 @@ export const ItemImage = styled.div`
     -webkit-transform: rotate(-4deg);
     transform: rotate(-2deg);
     z-index: -2;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: none;
   }
 `;
 

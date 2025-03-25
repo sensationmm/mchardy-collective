@@ -55,7 +55,15 @@ export const HoverContent: React.FC<IHoverContent> = ({ title, items, button }) 
               onMouseEnter={() => handleMouseEnter(count)}
               onMouseLeave={handleMouseLeave}
             >
-              <Styled.ItemCount>{(count + 1).toString().padStart(2, '0')}</Styled.ItemCount>
+              <Styled.ItemCountWrapper>
+                <Styled.ItemCount>{(count + 1).toString().padStart(2, '0')}</Styled.ItemCount>
+
+                {item.image && (
+                  <Styled.ItemThumb>
+                    <img src={item.image?.node.sourceUrl} />
+                  </Styled.ItemThumb>
+                )}
+              </Styled.ItemCountWrapper>
               <Styled.ItemTitle>{item.title}</Styled.ItemTitle>
               <Styled.ItemText>{item.text}</Styled.ItemText>
             </Styled.Item>
