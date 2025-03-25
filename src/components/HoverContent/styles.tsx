@@ -80,6 +80,12 @@ export const Item = styled.li`
     display: block;
     margin-bottom: 20px;
     padding: 0 0 20px 0;
+    color: ${palette.tertiary.dark};
+
+    &:before,
+    &:after {
+      display: none;
+    }
   }
 `;
 
