@@ -97,7 +97,8 @@ export const SocialItem = styled.div`
 `;
 
 export const Copyright = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   position: absolute;
   width: 100%;
   bottom: 20px;
@@ -106,4 +107,12 @@ export const Copyright = styled.div`
   color: ${palette.primary.light};
   text-transform: uppercase;
   font-size: 14px;
+
+  div:nth-child(2) {
+    text-align: center;
+  }
+
+  div:nth-child(3) {
+    text-align: right;
+  }
 `;
