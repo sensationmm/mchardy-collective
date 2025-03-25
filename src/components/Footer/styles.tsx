@@ -90,6 +90,10 @@ export const SocialItem = styled.div`
       right: -20px;
     }
   }
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const Copyright = styled.div`

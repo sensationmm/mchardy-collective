@@ -1,5 +1,4 @@
 import '@/app/globals.css';
-import { Footer } from '@/components/Footer';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -7,11 +6,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel='stylesheet' href='https://use.typekit.net/yie2kmd.css' />
       </head>
-      <body>
-        {children}
-
-        <Footer />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -7,6 +7,8 @@ export const PageQuery = gql`
       title,
     ...on WithAcfHome {
       home {
+        contact
+        linkedin
         flexible {
           fieldGroupName
             ...on HomeFlexibleAgencyLayout {

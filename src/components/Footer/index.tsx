@@ -1,14 +1,25 @@
 import * as Styled from './styles';
 
-export const Footer = () => {
+type IFooter = {
+  contact: string;
+  linkedin: string;
+};
+
+export const Footer: React.FC<IFooter> = ({ contact, linkedin }) => {
   return (
     <Styled.Container>
       <Styled.Inner>
         <Styled.Logo>McHardy : Collective</Styled.Logo>
 
         <Styled.SocialHeader>Social & Contact</Styled.SocialHeader>
-        <Styled.SocialItem>LinkedIn</Styled.SocialItem>
-        <Styled.SocialItem>richard@mchardycollective.com</Styled.SocialItem>
+        <Styled.SocialItem>
+          <a href={linkedin} target='_blank'>
+            LinkedIn
+          </a>
+        </Styled.SocialItem>
+        <Styled.SocialItem>
+          <a href={`mailto:${contact}`}>{contact}</a>
+        </Styled.SocialItem>
       </Styled.Inner>
 
       <Styled.Copyright>

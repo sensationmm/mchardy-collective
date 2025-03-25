@@ -16,6 +16,7 @@ import * as Styled from './page.styles';
 import { IScroller, Scroller } from '@/components/Scroller';
 import { Contact, IContact } from '@/components/Contact';
 import { PageQuery } from '@/components/Templates/Page/PageQuery';
+import { Footer } from '@/components/Footer';
 
 // type Props = {
 //   params: { slug: string };
@@ -59,7 +60,7 @@ export default async function HomePage(/*{ params }: Props*/) {
 
   return (
     <>
-      <Landing />
+      <Landing contact={page?.home?.contact || ''} />
 
       <Styled.Main>
         {page.home?.flexible?.map((block) => {
@@ -81,6 +82,8 @@ export default async function HomePage(/*{ params }: Props*/) {
           }
         })}
       </Styled.Main>
+
+      <Footer contact={page?.home?.contact || ''} linkedin={page?.home?.linkedin || ''} />
     </>
   );
 }

@@ -65,7 +65,7 @@ export const Motto = styled.div<{ $visible: string }>`
   }
 `;
 
-export const Contact = styled.div<{ $visible: string }>`
+export const Contact = styled.a<{ $visible: string }>`
   position: absolute;
   right: 20px;
   font-size: 16px;
@@ -73,4 +73,10 @@ export const Contact = styled.div<{ $visible: string }>`
   color: #fff;
   opacity: ${({ $visible = 'false' }) => ($visible === 'true' ? 1 : 0)};
   transition: opacity ease-in 0.1s;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;

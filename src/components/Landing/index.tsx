@@ -2,7 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import * as Styled from './styles';
 
-export const Landing = () => {
+type ILanding = {
+  contact: string;
+};
+
+export const Landing: React.FC<ILanding> = ({ contact }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
@@ -34,7 +38,9 @@ export const Landing = () => {
         <Styled.TitleSmall $visible={isSmallNav.toString()}>M&nbsp;&nbsp;:&nbsp;&nbsp;C</Styled.TitleSmall>
       </Styled.Title>
 
-      <Styled.Contact $visible={isSmallNav.toString()}>Contact</Styled.Contact>
+      <Styled.Contact $visible={isSmallNav.toString()} href={`mailto:${contact}`}>
+        Contact
+      </Styled.Contact>
     </Styled.Container>
   );
 };
